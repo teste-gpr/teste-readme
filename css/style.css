@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+/*Reset padrão*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+a, span, p, img{
+    display: block;
+}
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+ul{
+    list-style: none;
+}
+/*Estrutura grids*/
+.estrutura-grid-global{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 35vw 1fr;
+}
+.tabuleiro-cartas{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5, minmax(60px, 150px));
+    padding: 25px;
+    background-color: #161616;
+}
+/*Aside*/
+.menu-lateral{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0E0E0E;
+}
+.menu-lateral .titulo{
+    color: #F9E747;
+    font-size: 3.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2.3px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.informacoes-iniciais{
+    width: 90%;
+    display: grid;
+    gap: 40px;
+}
+.select-tema span, .select-dificuldade span{
+    padding: 10px 55px;
+    display: flex;
+    justify-content: center;
+}
+.select-tema span::after, .select-dificuldade span::after{
+    content: '';
+    display: inline-block;
+    background-image: url('/images/seta.svg');
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+}
+[data-select="lista-temas"], [data-select="lista-dificuldades"]{
+    display: none;
+    max-height: 85px;
+    overflow-y: auto;
+    border: 3px solid #000;
+    border-top: 0;
+    margin-bottom: 15px;
+}
+[data-select="lista-temas"] li, [data-select="lista-dificuldades"] li{
+    display: block;
+    padding: 10px 15px;
+    background-color: #fcf1a4;
+    transition: .3s;
+    cursor: pointer;
+}
+[data-select="lista-temas"] li:hover, [data-select="lista-dificuldades"] li:hover, .opc-selecionado{
+    background-color: #F9E747 !important;
+}
+.btn-jogar{
+    justify-self: center;
+    display: inline-block;
+    padding: 10px 25px;
+    transition: .3s;
+}
+.btn-jogar:hover{
+    background-color: #f1dd26;
+}
+.btn-jogar, .btn-novo-jogo, .select-tema span, .select-dificuldade span{
+    background-color: #F9E747;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border: 3px solid #000;
+    cursor: pointer;
+}
+.btn-jogar-desativado{
+    background-color: #A79C37 !important;
+    cursor: auto;
+}
+
+.titulo-desativado{
+    color: #A79C37 !important;
+}
+.informacoes-partida{
+    animation: anima-left .5s forwards;
+}
+@keyframes anima-left{
+    from{
+        opacity: 0;
+        transform: translate3d(-50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+.dados-partida{
+    display: grid;
+}
+.dados{
+    color: #fff;
+    margin-bottom: 30px;
+}
+.dados ul{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.dados ul li span{
+    color: rgb(138, 136, 136);
+}
+.dados ul li p{
+    font-size: 1.5rem;
+}
+[data-select="lista-temas"]::-webkit-scrollbar-thumb, [data-select="lista-dificuldades"]::-webkit-scrollbar-thumb{
+    background: #fcf1a4;
+    border-left: 3px solid #161616;
+    border-right: 3px solid #161616;
+}
+[data-select="lista-temas"]::-webkit-scrollbar-track, [data-select="lista-dificuldades"]::-webkit-scrollbar-track{
+    background: #161616;
+}
+.btn-novo-jogo{
+    display: inline-block;  
+    justify-self: center;
+    padding: 10px 60px;
+    background-color: #A79C37;
+    transition: .3s;
+}
+.btn-novo-jogo-atencao{
+    background-color: #f1dd26 !important;
+}
+.btn-novo-jogo:hover{
+    background-color: #f1dd26;
+}
+/*Tabuleiro cartas*/
+.carta{
+    height: 100px;
+    transform-style: preserve-3d;
+    transition: all .5s;
+    cursor: pointer;
+}
+.carta-desativada{
+    cursor: auto !important;
+}
+.fundo-escuro{
+    display: block;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+}
+.frente, .verso{
+    width: 100%;
+    height: 100px;
+    padding: 2px;
+    background-color: #f1dd26;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility:hidden; 
+    position: absolute;
+}
+.frente{
+    box-shadow: 0 0 0 2px #000 inset;
+    font-size: 4rem;
+    font-weight: 500;
+}
+.verso, .virar{
+    transform: rotateY(180deg); 
+}
+.virar-desativado{
+    transform: rotateY(180deg);
+}
+.verso img{
+    width: 100%;
+    height: 100%;
+}
+/*Clases js*/
+.js-ativo{
+    display: block;
+}
+.js-ativo-flex{
+    display: flex !important;
+}
+.js-inativo{
+    display: none !important;
+}

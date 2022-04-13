@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Jogo da memória - Completo</title>
+</head>
+
+<body>
+    <main class="estrutura-grid-global">
+        <aside class="menu-lateral">
+            <h1 class="titulo">Jogo da <br> memória</h1>
+            <div class="informacoes-iniciais">
+                <div class="select-tema">
+                    <span data-select="span">Selecione um tema</span>
+                    <ul data-select="lista-temas">
+                        <li data-select="marvel">Marvel</li>
+                        <li data-select="dc">Dc</li>
+                    </ul>
+                </div>
+                <div class="select-dificuldade">
+                    <span data-select="span">Escolha a dificuldade</span>
+                    <ul data-select="lista-dificuldades">
+                        <li data-select="1000">Fácil</li>
+                        <li data-select="500">Médio</li>
+                        <li data-select="250">Díficil</li>
+                    </ul>
+                </div>
+                <span class="btn-jogar btn-jogar-desativado">Jogar</span>
+            </div>
+            <div class="informacoes-partida js-inativo">
+                <div class="dados-partida">
+                    <div class="dados">
+                        <ul>
+                            <li>
+                                <span>pontos</span>
+                                <p dados-partida="pontos">0 pts</p>
+                            </li>
+                            <li>
+                                <span>restantes</span>
+                                <p dados-partida="restantes">10 pares</p>
+                            </li>
+                            <li>
+                                <span>tempo</span>
+                                <p dados-partida="tempo">00:00:00</p>
+                            </li>
+                            <li>
+                                <span>dificuldade</span>
+                                <p dados-partida="dificuldade">null</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="btn-novo-jogo">Novo jogo</span>
+                </div>
+            </div>
+        </aside>
+        <section class="tabuleiro-cartas">
+        </section>
+    </main>
+    <script type="module" src="/js/script.js"></script>
+</body>
+
+</html>
